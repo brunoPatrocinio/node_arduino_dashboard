@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.socket.io/4.2.0/socket.io.min.js" integrity="sha384-PiBR5S00EtOj2Lto9Uu81cmoyZqR57XcOna1oAuVuIEjzj0wpqDVfD0JA9eXlRsj" crossorigin="anonymous"></script>
+    <script type="text/javascript"></script>
+    <title>Painel</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1>Dashboard</h1>
+        <p>Esta página contém um painel de dados.</p>
+    </div>
+    </br>
+    <div id="d1">
+        <h2>
+            Dados Atuais:
+        </h2>
+    </div>
+    <div id="dado">
+        <p>
+
+        </p>
+    </div>
+
+    <script>
+        var text = document.getElementById('dado');
+        const socket = io('http://localhost:3000');
+        socket.on('data', (msg) => {
+            text.innerHTML = msg.data;
+        });
+    </script>
+</body>
+
+</html>
